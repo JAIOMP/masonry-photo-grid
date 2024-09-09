@@ -1,21 +1,18 @@
-import React, { useRef } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import useInfiniteScroll from '../hooks/useInfiniteScroll';
 import './Grid.css';
-import { Link } from 'react-router-dom';
 
 const Grid: React.FC = () => {
-    const { photos, loading, error, hasMore } = useInfiniteScroll();
-    const loader = useRef<HTMLDivElement | null>(null);
+    const { photos, error, hasMore } = useInfiniteScroll();
 
     return (
         <div>
             <h1>Photo Grid</h1>
             <div className="grid">
                 {photos.map((photo) => {
-                    // Calculate the span based on the image aspect ratio
-                    const span = Math.ceil(photo.height / photo.width * 10); // Use a multiplier for fine-tuning
                     return (
-                        <div key={photo.id} className="item" style={{ '--span': span }}>
+                        <div key={photo.id} className="item">
                             <Link to={`/photo/${photo.id}`}>
                                 <img src={photo.urls.regular} loading="lazy" alt={photo.description || 'Image'} />
                             </Link>
@@ -23,10 +20,8 @@ const Grid: React.FC = () => {
                     );
                 })}
             </div>
-            {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
             {!hasMore && <p>No more photos to load</p>}
-            <div ref={loader} className="loader" />
         </div>
     );
 };
