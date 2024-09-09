@@ -1,0 +1,27 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive columns */
+    gap: 10px; /* Space between grid items */
+    margin: 0 auto; /* Center the grid */
+    grid-auto-rows: 10px; /* Set a base height for rows to create a masonry effect */
+  }
+  
+  .item {
+    display: block;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    grid-row-end: span var(--span); /* Control height based on content */
+  }
+  
+  .item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .loader {
+    text-align: center;
+    padding: 20px;
+  }
