@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Grid from './components/Grid';
-import PhotoDetails from './components/PhotoDetails';
+import Grid from './components/Grid/Grid';
+import PhotoDetails from './components/PhotoDetails/PhotoDetails';
 
 const AppRouter: React.FC = () => {
   return (

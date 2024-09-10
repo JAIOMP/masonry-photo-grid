@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useInfiniteScroll from '../hooks/useInfiniteScroll';
+import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 import './Grid.css';
 
 const Grid: React.FC = () => {

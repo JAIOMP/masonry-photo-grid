@@ -1,13 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios, { CancelTokenSource } from 'axios';
-
-const UNSPLASH_API_URL = 'https://pixabay.com/api/?key=45859066-ec83d92f5cac4687d1788b9e3';
-
-interface PixabayPhoto {
-    id: string;
-    largeImageURL: string;
-    tags: string;
-}
+import { PixabayPhoto } from '../types';
+import { PIXABAY_API_URL } from '../constants/config';
 
 const useInfiniteScroll = () => {
     const [photos, setPhotos] = useState<PixabayPhoto[]>([]);
@@ -31,7 +25,7 @@ const useInfiniteScroll = () => {
         cancelToken = axios.CancelToken.source();
 
         try {
-            const response = await axios.get(UNSPLASH_API_URL, {
+            const response = await axios.get(PIXABAY_API_URL, {
                 params: {
                     page,
                     per_page: 12,
