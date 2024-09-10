@@ -11,6 +11,7 @@ export interface PixabayPhoto {
     id: string;
     largeImageURL: string;
     webformatURL: string;
+    previewURL: string;
     tags: string;
     alt_description: string;
 }

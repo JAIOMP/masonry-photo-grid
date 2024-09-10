@@ -14,7 +14,22 @@ const Grid: React.FC = () => {
                     return (
                         <div key={photo.id} className="item">
                             <Link to={`/photo/${photo.id}`}>
-                                <img src={photo.largeImageURL} loading="lazy" alt={photo.tags || 'Image'} />
+                                <picture>
+                                    <source
+                                        media="(max-width: 600px)"
+                                        srcSet={photo.previewURL}
+                                    />
+                                    <source
+                                        media="(max-width: 1024px)"
+                                        srcSet={photo.webformatURL}
+                                    />
+                                    <img
+                                        src={photo.largeImageURL}
+                                        alt={photo.tags}
+                                        loading="lazy"
+                                        style={{ maxWidth: '100%' }}
+                                    />
+                                </picture>
                             </Link>
                         </div>
                     );

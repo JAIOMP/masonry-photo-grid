@@ -41,7 +41,22 @@ const PhotoDetails: React.FC = () => {
         <div>
             <h1>Photo Details</h1>
             <div className="photo-details">
-                <img src={photo.webformatURL} alt={photo.tags} loading="lazy" />
+                <picture>
+                    <source
+                        media="(max-width: 600px)"
+                        srcSet={photo.previewURL}
+                    />
+                    <source
+                        media="(max-width: 1024px)"
+                        srcSet={photo.webformatURL}
+                    />
+                    <img
+                        src={photo.largeImageURL}
+                        alt={photo.tags}
+                        loading="lazy"
+                        style={{ maxWidth: '100%' }}
+                    />
+                </picture>
                 <div>
                     <p><strong>Title:</strong> {photo.tags}</p>
                     <p><strong>Description:</strong> Description </p>
