@@ -59,9 +59,9 @@ const PhotoDetails: React.FC = () => {
                 </picture>
                 <div>
                     <p><strong>Title:</strong> {photo.tags}</p>
-                    <p><strong>Description:</strong> Description </p>
-                    <p><strong>Photographer:</strong> User </p>
-                    <p><strong>Published on:</strong> {formatDate(new Date().toDateString())}</p>
+                    <p><strong>Description:</strong> {photo.tags} </p>
+                    <p><strong>Photographer:</strong> {photo.user} </p>
+                    {/* <p><strong>Published on:</strong> {formatDate(new Date().toDateString())}</p> */}
                     <div className="back-link">
                         <Link to="/">Back to Grid</Link>
                     </div>

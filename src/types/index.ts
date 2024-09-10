@@ -14,4 +14,5 @@ export interface PixabayPhoto {
     previewURL: string;
     tags: string;
     alt_description: string;
+    user: string;
 }
