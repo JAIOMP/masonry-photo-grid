@@ -22,6 +22,8 @@ const Grid: React.FC = () => {
             </div>
             {error && <p>{error}</p>}
             {!hasMore && <p>No more photos to load</p>}
+            {/* Sentinel element */}
+            <div id="sentinel" />
         </div>
     );
 };

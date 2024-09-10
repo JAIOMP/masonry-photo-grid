@@ -34,7 +34,7 @@ const useInfiniteScroll = () => {
             });
 
             setPhotos((prevPhotos) => [...prevPhotos, ...response.data.hits]);
-            setHasMore(response.data.hits.length > 0); // Set hasMore to false if no more photos
+            setHasMore(response.data.hits.length > 0);
         } catch (err) {
             if (axios.isCancel(err)) {
                 console.log('Request cancelled', err.message);
@@ -50,19 +50,28 @@ const useInfiniteScroll = () => {
         fetchPhotos();
     }, [page]);
 
-    // Infinite scrolling logic
-    const loadMorePhotos = () => {
-        const scrollThreshold = 500; // Start loading when user is 500px from the bottom
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - scrollThreshold) {
-            setPage((prevPage) => prevPage + 1);
-        }
-    };
-
     useEffect(() => {
-        window.addEventListener('scroll', loadMorePhotos);
-        // Cleanup the event listener on component unmount
-        return () => window.removeEventListener('scroll', loadMorePhotos);
-      }, [photos]);
+        const sentinel = document.getElementById('sentinel');
+
+        if (!sentinel) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting) {
+                    setPage((prevPage) => prevPage + 1);
+                }
+            },
+            {
+                rootMargin: '100px',
+            }
+        );
+
+        observer.observe(sentinel);
+
+        return () => {
+            observer.unobserve(sentinel);
+        };
+    }, [photos]);
 
     return { photos, loading, error, hasMore };
 };
