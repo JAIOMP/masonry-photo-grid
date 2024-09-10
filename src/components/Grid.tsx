@@ -14,7 +14,7 @@ const Grid: React.FC = () => {
                     return (
                         <div key={photo.id} className="item">
                             <Link to={`/photo/${photo.id}`}>
-                                <img src={photo.urls.regular} loading="lazy" alt={photo.description || 'Image'} />
+                                <img src={photo.largeImageURL} loading="lazy" alt={photo.tags || 'Image'} />
                             </Link>
                         </div>
                     );
