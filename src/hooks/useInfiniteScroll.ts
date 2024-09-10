@@ -13,7 +13,7 @@ const useInfiniteScroll = () => {
     const [photos, setPhotos] = useState<PixabayPhoto[]>([]);
     const [page, setPage] = useState<number>(1);
     const [loading, setLoading] = useState<boolean>(false);
-    const [hasMore, setHasMore] = useState<boolean>(true); 
+    const [hasMore, setHasMore] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     let cancelToken: CancelTokenSource | null = null;
 
@@ -55,6 +55,20 @@ const useInfiniteScroll = () => {
     useEffect(() => {
         fetchPhotos();
     }, [page]);
+
+    // Infinite scrolling logic
+    const loadMorePhotos = () => {
+        const scrollThreshold = 500; // Start loading when user is 500px from the bottom
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - scrollThreshold) {
+            setPage((prevPage) => prevPage + 1);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', loadMorePhotos);
+        // Cleanup the event listener on component unmount
+        return () => window.removeEventListener('scroll', loadMorePhotos);
+      }, [photos]);
 
     return { photos, loading, error, hasMore };
 };
