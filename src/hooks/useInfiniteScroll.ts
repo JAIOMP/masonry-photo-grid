@@ -3,7 +3,7 @@ import axios, { CancelTokenSource } from 'axios';
 import { PixabayPhoto } from '../types';
 import { PIXABAY_API_URL } from '../constants/config';
 
-const useInfiniteScroll = () => {
+const useInfiniteScroll = (query: string) => {
     const [photos, setPhotos] = useState<PixabayPhoto[]>([]);
     const [page, setPage] = useState<number>(1);
     const [loading, setLoading] = useState<boolean>(false);
@@ -12,7 +12,7 @@ const useInfiniteScroll = () => {
     let cancelToken: CancelTokenSource | null = null;
 
     const fetchPhotos = async () => {
-        if (loading || !hasMore) return;
+        if (loading || (!hasMore && page != 1)) return;
 
         setLoading(true);
 
@@ -29,11 +29,15 @@ const useInfiniteScroll = () => {
                 params: {
                     page,
                     per_page: 12,
+                    q: query,
                 },
                 cancelToken: cancelToken.token,
             });
-
-            setPhotos((prevPhotos) => [...prevPhotos, ...response.data.hits]);
+            if (page === 1) {
+                setPhotos(response.data.hits);
+            } else {
+                setPhotos((prevPhotos) => [...prevPhotos, ...response.data.hits]); // Append
+            }
             setHasMore(response.data.hits.length > 0);
         } catch (err) {
             if (axios.isCancel(err)) {
@@ -48,7 +52,7 @@ const useInfiniteScroll = () => {
 
     useEffect(() => {
         fetchPhotos();
-    }, [page]);
+    }, [page, query]);
 
     useEffect(() => {
         const sentinel = document.getElementById('sentinel');
@@ -73,7 +77,7 @@ const useInfiniteScroll = () => {
         };
     }, [photos]);
 
-    return { photos, loading, error, hasMore };
+    return { photos, loading, error, hasMore, setPage };
 };
 
 export default useInfiniteScroll;

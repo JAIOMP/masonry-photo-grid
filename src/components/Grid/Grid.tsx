@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 import './Grid.css';
+import SearchInput from '../SearchInput/SearchInput';
+import { debounce } from '../../utils/debounce';
 
 const Grid: React.FC = () => {
-    const { photos, error, hasMore } = useInfiniteScroll();
+    const [query, setQuery] = useState('');
+    const { photos, error, hasMore, setPage } = useInfiniteScroll(query);
+
+    const handleSearch = debounce((value: string) => {
+        setQuery(value);
+        setPage(1);
+      }, 300);
 
     return (
         <div>
             <h1>Photo Grid</h1>
+            <SearchInput onSearch={handleSearch} />
             <div className="grid">
                 {photos.map((photo) => {
                     return (
@@ -37,7 +46,6 @@ const Grid: React.FC = () => {
             </div>
             {error && <p>{error}</p>}
             {!hasMore && <p>No more photos to load</p>}
-            {/* Sentinel element */}
             <div id="sentinel" />
         </div>
     );
