@@ -38,15 +38,19 @@ const PhotoDetails: React.FC = () => {
     if (!photo) return <div>No photo found</div>;
 
     return (
-        <div className="photo-details">
+        <div>
             <h1>Photo Details</h1>
-            <img src={photo.webformatURL} alt={photo.tags} loading="lazy" />
-            <p><strong>Title:</strong> {photo.tags}</p>
-            <p><strong>Description:</strong> Description </p>
-            <p><strong>Photographer:</strong> User </p>
-            <p><strong>Published on:</strong> {formatDate(new Date().toDateString())}</p>
-            <div className="back-link">
-                <Link to="/">Back to Grid</Link>
+            <div className="photo-details">
+                <img src={photo.webformatURL} alt={photo.tags} loading="lazy" />
+                <div>
+                    <p><strong>Title:</strong> {photo.tags}</p>
+                    <p><strong>Description:</strong> Description </p>
+                    <p><strong>Photographer:</strong> User </p>
+                    <p><strong>Published on:</strong> {formatDate(new Date().toDateString())}</p>
+                    <div className="back-link">
+                        <Link to="/">Back to Grid</Link>
+                    </div>
+                </div>
             </div>
         </div>
     );
