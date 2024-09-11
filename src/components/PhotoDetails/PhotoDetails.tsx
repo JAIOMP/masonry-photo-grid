@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { formatDate } from '../../utils/dateUtils';
 import { PixabayPhoto } from '../../types';
 import { PIXABAY_API_URL } from '../../constants/config';
 import './PhotoDetails.css';
