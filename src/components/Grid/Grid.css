@@ -11,12 +11,12 @@
     row-gap: 24px;
 }
 
-.image-item img {
+.photo-item img {
     width: 100%;
     border-radius: 8px;
 }
 
-.image-item {
+.photo-item {
     position: relative;
     overflow: hidden;  
     border-radius: 10px;
@@ -24,7 +24,7 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.image-item img {
+.photo-item img {
     width: 100%;
     height: auto;
     display: block;
@@ -32,16 +32,16 @@
     transition: transform 0.3s ease;
 }
 
-.image-item:hover {
+.photo-item:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.image-item:hover img {
+.photo-item:hover img {
     transform: scale(1.1);
 }
 
-.image-item::before {
+.photo-item::before {
     content: "";
     position: absolute;
     top: 0;
@@ -53,11 +53,11 @@
     transition: opacity 0.3s ease;
 }
 
-.image-item:hover::before {
+.photo-item:hover::before {
     opacity: 1;
 }
 
-.image-item:hover::after {
+.photo-item:hover::after {
     content: "Click to view";
     position: absolute;
     bottom: 10px;
@@ -70,7 +70,7 @@
     transition: opacity 0.3s ease;
 }
 
-.image-item:hover::after {
+.photo-item:hover::after {
     opacity: 1;
 }
   

@@ -2,8 +2,12 @@ import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { PixabayPhoto } from '../../types';
 import { PIXABAY_API_URL } from '../../constants/config';
+import PublishedIcon from '../../assets/published.svg?react';
+import TagsIcon from '../../assets/tags.svg?react';
+import PersonIcon from '../../assets/profile.svg?react';
 import './PhotoDetails.css';
 import axios from 'axios';
+import { formatDate } from '../../utils/dateUtils';
 
 const PhotoDetails: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -37,8 +41,13 @@ const PhotoDetails: React.FC = () => {
     if (!photo) return <div>No photo found</div>;
 
     return (
-        <div>
-            <h1>Photo Details</h1>
+        <div className='photo-details-container'>
+            <div className="photo-details-title">
+                <h2>Photo Details</h2>
+                <div className="back-link">
+                    <Link to="/">Back to Grid</Link>
+                </div>
+            </div>
             <div className="photo-details">
                 <picture>
                     <source
@@ -57,13 +66,12 @@ const PhotoDetails: React.FC = () => {
                     />
                 </picture>
                 <div>
-                    <p><strong>Title:</strong> {photo.tags}</p>
-                    <p><strong>Description:</strong> {photo.tags} </p>
-                    <p><strong>Photographer:</strong> {photo.user} </p>
-                    {/* <p><strong>Published on:</strong> {formatDate(new Date().toDateString())}</p> */}
-                    <div className="back-link">
-                        <Link to="/">Back to Grid</Link>
+                    <div className="icon-detail">
+                        <TagsIcon className="icon" /> 
+                        {photo.tags.split(', ').map((tag: string) => <span className='tag'>{tag}</span>)} 
                     </div>
+                    <p className="icon-detail"><PersonIcon className='icon' /> {photo.user} </p>
+                    <p className="icon-detail"><PublishedIcon className="icon" />Published on {formatDate(new Date().toDateString())}</p>
                 </div>
             </div>
         </div>

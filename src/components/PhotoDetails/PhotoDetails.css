@@ -1,7 +1,6 @@
 .photo-details {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    gap: 24px;
     justify-content: space-around;
     padding: 20px;
     margin: 0 auto;
@@ -9,34 +8,36 @@
     box-shadow: 0 2px 10px var(--shadow-light);
 }
 
-.photo-details img {
+.photo-details-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.photo-details-container img {
     border-radius: 8px;
     box-shadow: 0 4px 8px var(--shadow-light);
 }
 
-.photo-details h1 {
+.photo-details-container h2 {
+    margin: 0;
     font-size: 2rem;
     margin-bottom: 16px;
     color: var(--background-dark);
 }
 
-.photo-details p {
+.photo-details-container p {
     font-size: 1rem;
     margin-bottom: 12px;
     color: var(--text-secondary);
 }
 
-.photo-details p strong {
+.photo-details-container p strong {
     color: var(--text-primary);
 }
 
-.photo-details .back-link {
-    margin-top: 20px;
+.back-link {
     font-size: 1rem;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 1rem;
+    align-self: flex-start;
     background-color: var(--link-color);
     color: white;
     padding: 8px 12px;
@@ -44,14 +45,32 @@
     text-decoration: none;
 }
 
-.photo-details .back-link a {
+.back-link a {
     color: var(--text-light);
     text-decoration: none;
     font-weight: 500;
 }
 
-.photo-details .back-link a:hover {
-    text-decoration: underline;
+.tag {
+    background-color: #3498db;
+    color: white;
+    text-wrap: nowrap;
+    margin-right: 5px;
+    font-size: 0.875rem;
+    padding: 5px 10px;
+    border-radius: 20px;
+    text-transform: capitalize;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.tag:hover {
+    background-color: #2980b9;
+}
+
+.icon-detail {
+    display: flex;
+    align-items: center;
 }
 
 @media (max-width: 600px) {
@@ -59,11 +78,23 @@
         padding: 10px;
     }
 
-    .photo-details h1 {
+    .photo-details-container h2 {
         font-size: 1.5rem;
     }
 
-    .photo-details p {
+    .photo-details-container p {
         font-size: 0.875rem;
     }
+
+    .photo-details {
+        flex-direction: column;
+    }
+}
+
+.icon {
+    display: inline-block;
+    fill: rgb(90, 101, 124);
+    height: 24px;
+    width: 24px;
+    margin-right: 5px;
 }

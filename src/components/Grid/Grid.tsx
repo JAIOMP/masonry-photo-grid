@@ -48,7 +48,7 @@ interface PhotoItemProps {
 }
 
 const PhotoItem = React.memo(({ photo }: PhotoItemProps) => {
-    return <div className="image-item">
+    return <div className="photo-item">
         <Link to={`/photo/${photo.id}`}>
             <picture>
                 <source
