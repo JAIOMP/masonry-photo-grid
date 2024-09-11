@@ -68,7 +68,7 @@ const PhotoDetails: React.FC = () => {
                 <div>
                     <div className="icon-detail">
                         <TagsIcon className="icon" /> 
-                        {photo.tags.split(', ').map((tag: string) => <span className='tag'>{tag}</span>)} 
+                        {photo.tags.split(', ').map((tag: string, index: number) => <span key={index} className='tag'>{tag}</span>)} 
                     </div>
                     <p className="icon-detail"><PersonIcon className='icon' /> {photo.user} </p>
                     <p className="icon-detail"><PublishedIcon className="icon" />Published on {formatDate(new Date().toDateString())}</p>
