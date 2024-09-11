@@ -4,8 +4,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.1);
-    /* Semi-transparent background */
+    background-color: var(--error-boundary-bg);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,37 +12,34 @@
 }
 
 .error-content {
-    background: #fff;
+    background: var(--background-light);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px var(--shadow-medium);
     text-align: center;
 }
 
 .error-content h1 {
     font-size: 2rem;
-    color: #d9534f;
-    /* Error color */
+    color: var(--error-color);
 }
 
 .error-content p {
     font-size: 1rem;
-    color: #333;
+    color: var(--text-primary);
 }
 
 .error-content button {
     margin-top: 10px;
     padding: 10px 20px;
     font-size: 1rem;
-    background-color: #007bff;
-    /* Primary color */
-    color: #fff;
+    background-color: var(--link-color);
+    color: var(--text-light);
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
 .error-content button:hover {
-    background-color: #0056b3;
-    /* Darker shade for hover */
+    background-color: var(--button-hover-color);
 }
