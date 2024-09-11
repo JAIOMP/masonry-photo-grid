@@ -6,34 +6,25 @@ import { debounce } from '../../utils/debounce';
 import { PixabayPhoto } from "../../types";
 import SearchInput from "../SearchInput/SearchInput";
 
-function splitItemsIntoColumns(items: PixabayPhoto[], numColumns: number) {
-    const columns: PixabayPhoto[][] = Array.from(
-        { length: numColumns },
-        () => []
-    );
-
-    items.forEach((item: PixabayPhoto, index) => {
+function splitItemsIntoColumns(items: PixabayPhoto[], numColumns: number): PixabayPhoto[][] {
+    const columns: PixabayPhoto[][] = Array.from({ length: numColumns }, () => []);
+    items.forEach((item, index) => {
         const columnIndex = index % numColumns;
-        columns[columnIndex].push(item as PixabayPhoto);
+        columns[columnIndex].push(item);
     });
-
     return columns;
 }
 
-function getNumberOfColumns() {
+function getNumberOfColumns(): number {
     const screenWidth = window.innerWidth;
-    if (screenWidth >= 1024) {
-        return 3;
-    } else if (screenWidth >= 768) {
-        return 2;
-    } else {
-        return 1;
-    }
+    if (screenWidth >= 1024) return 3;
+    if (screenWidth >= 768) return 2;
+    return 1;
 }
 
 const Grid: React.FC = () => {
-    const [numColumns, setNumColumns] = useState(getNumberOfColumns());
-    const [query, setQuery] = useState('');
+    const [numColumns, setNumColumns] = useState<number>(getNumberOfColumns());
+    const [query, setQuery] = useState<string>('');
 
     const { photos, error, hasMore, setPage } = useInfiniteScroll(query);
 
@@ -44,26 +35,18 @@ const Grid: React.FC = () => {
 
 
     useEffect(() => {
-        const handleResize = () => {
-            setNumColumns(getNumberOfColumns());
-        };
-
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
+        const handleResize = () => setNumColumns(getNumberOfColumns());
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const columns: PixabayPhoto[][] = splitItemsIntoColumns(photos, numColumns);
+    const columns = splitItemsIntoColumns(photos, numColumns);
 
     return (
         <div>
             <h1>Photo Grid</h1>
-
             <SearchInput onSearch={handleSearch} />
-
-            <div className="grid grand-parent" style={{ '--columns': numColumns }}>
+            <div className="grid grand-parent" style={{ '--columns': numColumns } as React.CSSProperties}>
                 {columns.map((column, columnIndex) => (
                     <div className="grid parent" key={columnIndex}>
                         {column.map((photo) => <PhotoItem photo={photo} key={photo.id} />)}
