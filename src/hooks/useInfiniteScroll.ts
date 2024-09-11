@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
 import axios, { CancelTokenSource } from 'axios';
-import { PixabayPhoto } from '../types';
+import { useEffect, useState } from 'react';
 import { PIXABAY_API_URL } from '../constants/config';
+import { PixabayPhoto } from '../types';
 
 const useInfiniteScroll = (query: string) => {
     const [photos, setPhotos] = useState<PixabayPhoto[]>([]);
