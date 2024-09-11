@@ -87,3 +87,43 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.header {
+  font-family: 'Roboto', sans-serif;
+  font-size: 3rem;
+  color: #2c3e50;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.header::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #3498db;
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
+.header:hover::after {
+  width: 120px;
+  transition: width 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .header {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    font-size: 2rem;
+  }
+}

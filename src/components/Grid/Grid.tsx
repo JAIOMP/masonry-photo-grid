@@ -2,25 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useInfiniteScroll from "../../hooks/useInfiniteScroll";
 import "./Grid.css";
-import { debounce } from '../../utils/debounce';
+import { debounce, getNumberOfColumns, splitItemsIntoColumns } from '../../utils/debounce';
 import { PixabayPhoto } from "../../types";
 import SearchInput from "../SearchInput/SearchInput";
-
-function splitItemsIntoColumns(items: PixabayPhoto[], numColumns: number): PixabayPhoto[][] {
-    const columns: PixabayPhoto[][] = Array.from({ length: numColumns }, () => []);
-    items.forEach((item, index) => {
-        const columnIndex = index % numColumns;
-        columns[columnIndex].push(item);
-    });
-    return columns;
-}
-
-function getNumberOfColumns(): number {
-    const screenWidth = window.innerWidth;
-    if (screenWidth >= 1024) return 3;
-    if (screenWidth >= 768) return 2;
-    return 1;
-}
 
 const Grid: React.FC = () => {
     const [numColumns, setNumColumns] = useState<number>(getNumberOfColumns());
@@ -44,8 +28,8 @@ const Grid: React.FC = () => {
 
     return (
         <div>
-            <h1>Photo Grid</h1>
             <SearchInput onSearch={handleSearch} />
+
             <div className="grid grand-parent" style={{ '--columns': numColumns } as React.CSSProperties}>
                 {columns.map((column, columnIndex) => (
                     <div className="grid parent" key={columnIndex}>
@@ -64,7 +48,7 @@ interface PhotoItemProps {
 }
 
 const PhotoItem = React.memo(({ photo }: PhotoItemProps) => {
-    return <div className="item">
+    return <div className="image-item">
         <Link to={`/photo/${photo.id}`}>
             <picture>
                 <source
