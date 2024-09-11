@@ -21,10 +21,10 @@ const PhotoDetails: React.FC = () => {
                 const response = await axios.get(PIXABAY_API_URL, {
                     params: { id },
                 });
-                console.log(response);
+
                 const data = response.data.hits[0];
                 setPhoto(data);
-                console.log(data)
+
             } catch (err) {
                 setError('Failed to load photo details');
             } finally {
