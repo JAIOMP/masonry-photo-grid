@@ -1,5 +1,4 @@
 import React, { Component, ErrorInfo } from 'react';
-import './ErrorBoundary.css';
 import { ErrorBoundaryWrapper, ErrorContent, ErrorMessage, ErrorTitle, RetryButton } from './ErrorBoundryStyle';
 
 interface Props {
