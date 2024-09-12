@@ -1,1 +1,1 @@
-export const PIXABAY_API_URL = import.meta.env.VITE_PIXABAY_API_URL;
+export const PIXABAY_API_URL = `https://pixabay.com/api/?key=${import.meta.env.VITE_PIXABAY_API_KEY}`;
