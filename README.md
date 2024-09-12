@@ -22,7 +22,7 @@ The Masonry Photo Grid is a responsive web application that lets users browse an
 ## Setup and Installation
 
 ### Pixabay API Key
-Instead of using Unsplash, we now use the Pixabay API to fetch images. You'll need a Pixabay API key to run the project. A dummy API key is provided for testing purposes.
+Initially, we intended to use the Unsplash API for fetching images. However, despite creating an account, our app is currently under review, and we were unable to obtain an API key in time. As a result, we switched to using the Pixabay API, which is fully functional and supports all the features we needed for the project. You'll need a Pixabay API key to run the project. A dummy API key is provided for testing purposes.
 
 ### Environment Setup
 Create a .env file in the root of the project with the following content:
