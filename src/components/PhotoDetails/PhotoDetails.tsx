@@ -5,7 +5,6 @@ import { PIXABAY_API_URL } from '../../constants/config';
 import PublishedIcon from '../../assets/published.svg';
 import TagsIcon from '../../assets/tags.svg';
 import PersonIcon from '../../assets/profile.svg';
-import './PhotoDetails.css';
 import { BackLink, IconDetail, PhotoDetailsBody, PhotoDetailsContainer, PhotoDetailsImage, PhotoDetailsText, PhotoDetailsTitle, Tag } from './PhotoDetailsStyle';
 import axios from 'axios';
 import { formatDate } from '../../utils/dateUtils';

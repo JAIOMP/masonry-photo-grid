@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './SearchInput.css';
+import { StyledSearchBar } from './SearchInputStyle';
 
 interface SearchInputProps {
   onSearch: (query: string) => void;
@@ -15,10 +15,9 @@ const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
 
   return (
     <div>
-      <input
+      <StyledSearchBar
         type="text"
         value={query}
-        className="search-bar"
         onChange={handleInputChange}
         placeholder="Search for photos..."
         aria-label="Search for photos"
