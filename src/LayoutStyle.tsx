@@ -5,8 +5,4 @@ export const StyledLayout = styled.div`
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
-
-  @media (max-width: 1320px) {
-    max-width: 100%;
-  }
 `;

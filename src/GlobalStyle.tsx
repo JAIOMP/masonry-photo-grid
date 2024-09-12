@@ -9,12 +9,6 @@ export const GlobalStyle = createGlobalStyle`
     color-scheme: light dark;
     color: var(--text-light);
 
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    padding: 0 20px;
-
     /* Background colors */
     --background-light: #f9f9f9;
     --background-dark: #333;
@@ -38,64 +32,6 @@ export const GlobalStyle = createGlobalStyle`
 
     /* Error color */
     --error-color: #d9534f;
-  }
-
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: var(--background-light);
-    color: var(--text-primary);
-  }
-
-  a {
-    font-weight: 500;
-    color: var(--link-color);
-    text-decoration: inherit;
-  }
-
-  a:hover {
-    color: var(--primary-blue-dark);
-    text-decoration: none;
-  }
-
-  h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
-  }
-
-  button {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: var(--background-dark);
-    cursor: pointer;
-    transition: border-color 0.25s;
-  }
-
-  button:hover {
-    border-color: var(--link-color);
-  }
-
-  button:focus,
-  button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
-  }
-
-  @media (prefers-color-scheme: light) {
-    :root {
-      color: var(--text-primary);
-    }
-
-    a:hover {
-      color: var(--primary-blue-dark);
-    }
-
-    button {
-      background-color: var(--background-light);
-    }
   }
 
   .header {
