@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useInfiniteScroll from "../../hooks/useInfiniteScroll";
-import "./Grid.css";
 import { debounce } from '../../utils/debounce';
-import { PixabayPhoto } from "../../types";
 import SearchInput from "../SearchInput/SearchInput";
 import { getNumberOfColumns, splitItemsIntoColumns } from "../../utils/layoutUtils";
+import { GrandParent, Parent, PhotoItem, PhotoItemImage } from './GridStyle';
 
 const Grid: React.FC = () => {
     const [numColumns, setNumColumns] = useState<number>(getNumberOfColumns());
@@ -30,45 +29,28 @@ const Grid: React.FC = () => {
     return (
         <div>
             <SearchInput onSearch={handleSearch} />
-
-            <div className="grid grand-parent" style={{ '--columns': numColumns } as React.CSSProperties}>
+            <GrandParent columns={numColumns}>
                 {columns.map((column, columnIndex) => (
-                    <div className="grid parent" key={columnIndex}>
-                        {column.map((photo) => <PhotoItem photo={photo} key={photo.id} />)}
-                    </div>
+                    <Parent key={columnIndex}>
+                        {column.map((photo) => (
+                            <PhotoItem key={photo.id}>
+                                <Link to={`/photo/${photo.id}`}>
+                                    <picture>
+                                        <source media="(max-width: 600px)" srcSet={photo.previewURL} />
+                                        <source media="(max-width: 1024px)" srcSet={photo.webformatURL} />
+                                        <PhotoItemImage src={photo.largeImageURL} alt={photo.tags} loading="lazy" />
+                                    </picture>
+                                </Link>
+                            </PhotoItem>
+                        ))}
+                    </Parent>
                 ))}
-            </div>
+            </GrandParent>
             {error && <p>{error}</p>}
             {!hasMore && <p>No more photos to load</p>}
             <div id="sentinel" />
         </div>
     );
 };
-interface PhotoItemProps {
-    photo: PixabayPhoto;
-}
-
-const PhotoItem = React.memo(({ photo }: PhotoItemProps) => {
-    return <div className="photo-item">
-        <Link to={`/photo/${photo.id}`}>
-            <picture>
-                <source
-                    media="(max-width: 600px)"
-                    srcSet={photo.previewURL}
-                />
-                <source
-                    media="(max-width: 1024px)"
-                    srcSet={photo.webformatURL}
-                />
-                <img
-                    src={photo.largeImageURL}
-                    alt={photo.tags}
-                    loading="lazy"
-                    style={{ maxWidth: '100%' }}
-                />
-            </picture>
-        </Link>
-    </div>
-});
 
 export default Grid;
