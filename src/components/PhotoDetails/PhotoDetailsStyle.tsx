@@ -91,9 +91,9 @@ export const Tag = styled.span`
     }
 `;
 
-export const PhotoDetailsText = styled.p`
+export const PhotoDetailsText = styled.div`
     font-size: 1rem;
-    margin-bottom: 12px;
+    margin: 12px 0;
     color: var(--text-secondary);
 
     @media (max-width: 600px) {
