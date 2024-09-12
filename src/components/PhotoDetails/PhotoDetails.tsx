@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { PixabayPhoto } from '../../types';
 import { PIXABAY_API_URL } from '../../constants/config';
 import PublishedIcon from '../../assets/published.svg';
 import TagsIcon from '../../assets/tags.svg';
 import PersonIcon from '../../assets/profile.svg';
 import './PhotoDetails.css';
+import { BackLink, IconDetail, PhotoDetailsBody, PhotoDetailsContainer, PhotoDetailsImage, PhotoDetailsText, PhotoDetailsTitle, Tag } from './PhotoDetailsStyle';
 import axios from 'axios';
 import { formatDate } from '../../utils/dateUtils';
 
@@ -41,14 +42,12 @@ const PhotoDetails: React.FC = () => {
     if (!photo) return <div>No photo found</div>;
 
     return (
-        <div className="photo-details-container">
-            <div className="photo-details-title">
+        <PhotoDetailsContainer>
+            <PhotoDetailsTitle>
                 <h2>Photo Details</h2>
-                <div className="back-link">
-                    <Link to="/">Back to Grid</Link>
-                </div>
-            </div>
-            <div className="photo-details">
+                <BackLink to="/">Back to Grid</BackLink>
+            </PhotoDetailsTitle>
+            <PhotoDetailsBody>
                 <picture>
                     <source
                         media="(max-width: 600px)"
@@ -58,23 +57,26 @@ const PhotoDetails: React.FC = () => {
                         media="(max-width: 1024px)"
                         srcSet={photo.largeImageURL}
                     />
-                    <img
+                    <PhotoDetailsImage
                         src={photo.largeImageURL}
                         alt={photo.tags}
                         loading="lazy"
-                        style={{ maxWidth: '100%' }}
                     />
                 </picture>
                 <div>
-                    <div className="icon-detail">
-                        <TagsIcon className="icon" /> 
-                        {photo.tags.split(', ').map((tag: string, index: number) => <span key={index} className='tag'>{tag}</span>)} 
-                    </div>
-                    <p className="icon-detail"><PersonIcon className='icon' /> {photo.user} </p>
-                    <p className="icon-detail"><PublishedIcon className="icon" />Published on {formatDate(new Date().toDateString())}</p>
+                    <IconDetail>
+                        <TagsIcon className="icon" />
+                        {photo.tags.split(', ').map((tag: string, index: number) => <Tag key={index}>{tag}</Tag>)}
+                    </IconDetail>
+                    <PhotoDetailsText>
+                        <PersonIcon className="icon" /> {photo.user}
+                    </PhotoDetailsText>
+                    <PhotoDetailsText>
+                        <PublishedIcon className="icon" /> Published on {formatDate(new Date().toDateString())}
+                    </PhotoDetailsText>
                 </div>
-            </div>
-        </div>
+            </PhotoDetailsBody>
+        </PhotoDetailsContainer>
     );
 };
 
