@@ -41,7 +41,7 @@ const PhotoDetails: React.FC = () => {
     if (!photo) return <div>No photo found</div>;
 
     return (
-        <div className='photo-details-container'>
+        <div className="photo-details-container">
             <div className="photo-details-title">
                 <h2>Photo Details</h2>
                 <div className="back-link">

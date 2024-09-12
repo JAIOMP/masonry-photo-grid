@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useInfiniteScroll from "../../hooks/useInfiniteScroll";
 import "./Grid.css";
-import { debounce, getNumberOfColumns, splitItemsIntoColumns } from '../../utils/debounce';
+import { debounce } from '../../utils/debounce';
 import { PixabayPhoto } from "../../types";
 import SearchInput from "../SearchInput/SearchInput";
+import { getNumberOfColumns, splitItemsIntoColumns } from "../../utils/layoutUtils";
 
 const Grid: React.FC = () => {
     const [numColumns, setNumColumns] = useState<number>(getNumberOfColumns());
