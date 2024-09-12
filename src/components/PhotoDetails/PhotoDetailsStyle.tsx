@@ -12,6 +12,12 @@ export const PhotoDetailsContainer = styled.div`
     color: var(--background-dark);
   }
 
+  @media (max-width: 600px) {
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+
   p {
     font-size: 1rem;
     margin-bottom: 12px;

@@ -40,7 +40,7 @@ const Grid: React.FC = () => {
                   <picture>
                     <source
                       media="(max-width: 600px)"
-                      srcSet={photo.previewURL}
+                      srcSet={photo.webformatURL}
                     />
                     <source
                       media="(max-width: 1024px)"
