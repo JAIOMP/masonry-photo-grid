@@ -55,6 +55,7 @@ const PhotoDetails: React.FC = () => {
         <h2>Photo Details</h2>
         <BackLink to="/">Back to Grid</BackLink>
       </PhotoDetailsTitle>
+
       <PhotoDetailsBody>
         <picture>
           <source media="(max-width: 600px)" srcSet={photo.webformatURL} />
@@ -65,6 +66,7 @@ const PhotoDetails: React.FC = () => {
             loading="lazy"
           />
         </picture>
+
         <div>
           <IconDetail>
             <IconWrapper>
@@ -88,6 +90,7 @@ const PhotoDetails: React.FC = () => {
           </PhotoDetailsText>
         </div>
       </PhotoDetailsBody>
+
     </PhotoDetailsContainer>
   );
 };

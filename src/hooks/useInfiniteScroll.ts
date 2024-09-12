@@ -24,12 +24,13 @@ const useInfiniteScroll = (query: string) => {
         // Create a new CancelToken for the new request
         cancelToken = axios.CancelToken.source();
 
+        const queryParams = query.length ? { q: query }: {}
+
         try {
             const response = await axios.get(PIXABAY_API_URL, {
                 params: {
                     page,
-                    per_page: 12,
-                    q: query,
+                    ...queryParams
                 },
                 cancelToken: cancelToken.token,
             });

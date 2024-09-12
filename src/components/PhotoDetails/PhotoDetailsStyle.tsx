@@ -98,6 +98,7 @@ export const Tag = styled.span`
 `;
 
 export const PhotoDetailsText = styled.div`
+  display: flex;
   font-size: 1rem;
   margin: 12px 0;
   color: var(--text-secondary);
