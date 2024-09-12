@@ -1,5 +1,11 @@
-import React, { Component, ErrorInfo } from 'react';
-import { ErrorBoundaryWrapper, ErrorContent, ErrorMessage, ErrorTitle, RetryButton } from './ErrorBoundryStyle';
+import React, { Component, ErrorInfo } from "react";
+import {
+  ErrorBoundaryWrapper,
+  ErrorContent,
+  ErrorMessage,
+  ErrorTitle,
+  RetryButton,
+} from "./ErrorBoundryStyle";
 
 interface Props {
   children: React.ReactNode;
@@ -20,7 +26,7 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    console.error('Error caught by ErrorBoundary:', error, errorInfo);
+    console.error("Error caught by ErrorBoundary:", error, errorInfo);
   }
 
   handleReset = () => {
@@ -34,7 +40,8 @@ class ErrorBoundary extends Component<Props, State> {
           <ErrorContent>
             <ErrorTitle>Something went wrong</ErrorTitle>
             <ErrorMessage>
-              We're sorry, but an unexpected error occurred. Please try again later.
+              We're sorry, but an unexpected error occurred. Please try again
+              later.
             </ErrorMessage>
             <RetryButton onClick={this.handleReset}>Retry</RetryButton>
           </ErrorContent>

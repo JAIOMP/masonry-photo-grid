@@ -1,5 +1,3 @@
-import { PixabayPhoto } from "../types";
-
 export const debounce = (func: Function, delay: number) => {
   let timer: number | undefined;
   return (...args: unknown[]) => {

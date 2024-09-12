@@ -1,15 +1,14 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import Grid from "../../../components/Grid/Grid.tsx";
-import { debounce, getNumberOfColumns } from "../../../utils/debounce.ts";
+import { debounce } from "../../../utils/debounce.ts";
 import { BrowserRouter } from "react-router-dom";
 import * as hooks from "../../../hooks/useInfiniteScroll";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { PixabayPhoto } from "../../../types/index.ts";
+import { getNumberOfColumns } from "../../../utils/layoutUtils.ts";
 
 vi.mock("../../../hooks/useInfiniteScroll");
-
-vi.mock("../../../utils/debounce", () => ({
-  debounce: vi.fn((fn) => fn),
+vi.mock("../../../utils/layoutUtils.ts", () => ({
   getNumberOfColumns: vi.fn(() => 3),
   splitItemsIntoColumns: vi.fn((items, numColumns) => {
     const columns: PixabayPhoto[][] = Array.from({ length: numColumns }, () => []);
@@ -18,6 +17,10 @@ vi.mock("../../../utils/debounce", () => ({
     });
     return columns;
   }),
+}));
+
+vi.mock("../../../utils/debounce", () => ({
+  debounce: vi.fn((fn) => fn),
 }));
 
 const mockPhotos = [

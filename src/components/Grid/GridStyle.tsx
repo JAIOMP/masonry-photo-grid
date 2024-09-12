@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const GrandParent = styled.div<{ columns: number }>`
   display: grid;

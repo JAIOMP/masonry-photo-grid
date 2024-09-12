@@ -1,9 +1,9 @@
-import { PixabayPhoto } from "../types";
+import { PixabayPhoto, GridColumnCount } from "../types";
 
 export const splitItemsIntoColumns = (
     items: PixabayPhoto[],
     numColumns: number
-  ) => {
+  ): PixabayPhoto[][] => {
     const columns: PixabayPhoto[][] = Array.from(
       { length: numColumns },
       () => []
@@ -17,7 +17,7 @@ export const splitItemsIntoColumns = (
     return columns;
   };
   
-  export const getNumberOfColumns = () => {
+  export const getNumberOfColumns = (): GridColumnCount => {
     const screenWidth = window.innerWidth;
     if (screenWidth >= 1024) {
       return 3;
