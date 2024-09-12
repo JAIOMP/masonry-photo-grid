@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
+import TagsIcon from '../../assets/tags.svg';
+import PersonIcon from '../../assets/profile.svg';
+import PublishedIcon from '../../assets/published.svg';
 
 export const PhotoDetailsContainer = styled.div`
     h2 {
@@ -101,3 +104,20 @@ export const PhotoDetailsText = styled.p`
         color: var(--text-primary);
     }
 `;
+
+export const IconWrapper = styled.div`
+  display: inline-flex;
+  align-items: center;
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--text-secondary);
+    margin-right: 8px;
+  }
+`;
+
+export const StyledTagsIcon = styled(TagsIcon)``;
+
+export const StyledPersonIcon = styled(PersonIcon)``;
+
+export const StyledPublishedIcon = styled(PublishedIcon)``;

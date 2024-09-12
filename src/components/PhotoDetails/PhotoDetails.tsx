@@ -5,7 +5,7 @@ import { PIXABAY_API_URL } from '../../constants/config';
 import PublishedIcon from '../../assets/published.svg';
 import TagsIcon from '../../assets/tags.svg';
 import PersonIcon from '../../assets/profile.svg';
-import { BackLink, IconDetail, PhotoDetailsBody, PhotoDetailsContainer, PhotoDetailsImage, PhotoDetailsText, PhotoDetailsTitle, Tag } from './PhotoDetailsStyle';
+import { BackLink, IconDetail, IconWrapper, PhotoDetailsBody, PhotoDetailsContainer, PhotoDetailsImage, PhotoDetailsText, PhotoDetailsTitle, StyledPersonIcon, StyledPublishedIcon, StyledTagsIcon, Tag } from './PhotoDetailsStyle';
 import axios from 'axios';
 import { formatDate } from '../../utils/dateUtils';
 
@@ -64,14 +64,22 @@ const PhotoDetails: React.FC = () => {
                 </picture>
                 <div>
                     <IconDetail>
-                        <TagsIcon className="icon" />
+                        <IconWrapper>
+                            <StyledTagsIcon />
+                        </IconWrapper>
                         {photo.tags.split(', ').map((tag: string, index: number) => <Tag key={index}>{tag}</Tag>)}
                     </IconDetail>
                     <PhotoDetailsText>
-                        <PersonIcon className="icon" /> {photo.user}
+                        <IconWrapper>
+                            <StyledPersonIcon />
+                            {photo.user}
+                        </IconWrapper>
                     </PhotoDetailsText>
                     <PhotoDetailsText>
-                        <PublishedIcon className="icon" /> Published on {formatDate(new Date().toDateString())}
+                        <IconWrapper>
+                            <StyledPublishedIcon />
+                        </IconWrapper>
+                        Published on {formatDate(new Date().toDateString())}
                     </PhotoDetailsText>
                 </div>
             </PhotoDetailsBody>
