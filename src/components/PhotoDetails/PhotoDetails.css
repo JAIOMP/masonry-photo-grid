@@ -39,7 +39,7 @@
     font-size: 1rem;
     align-self: flex-start;
     background-color: var(--link-color);
-    color: white;
+    color: var(--text-light);
     padding: 8px 12px;
     border-radius: 5px;
     text-decoration: none;
@@ -52,7 +52,7 @@
 }
 
 .tag {
-    background-color: #3498db;
+    background-color: var(--primary-blue);
     color: white;
     text-wrap: nowrap;
     margin-right: 5px;
@@ -65,7 +65,7 @@
 }
 
 .tag:hover {
-    background-color: #2980b9;
+    background-color: var(--primary-blue-dark);
 }
 
 .icon-detail {
@@ -93,7 +93,7 @@
 
 .icon {
     display: inline-block;
-    fill: rgb(90, 101, 124);
+    fill: var(--neutral-gray-blue);
     height: 24px;
     width: 24px;
     margin-right: 5px;
