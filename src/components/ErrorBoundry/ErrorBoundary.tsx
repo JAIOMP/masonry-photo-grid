@@ -1,5 +1,6 @@
 import React, { Component, ErrorInfo } from 'react';
 import './ErrorBoundary.css';
+import { ErrorBoundaryWrapper, ErrorContent, ErrorMessage, ErrorTitle, RetryButton } from './ErrorBoundryStyle';
 
 interface Props {
   children: React.ReactNode;
@@ -30,13 +31,15 @@ class ErrorBoundary extends Component<Props, State> {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="error-boundary">
-          <div className="error-content">
-            <h1>Something went wrong</h1>
-            <p>We're sorry, but an unexpected error occurred. Please try again later.</p>
-            <button onClick={this.handleReset}>Retry</button>
-          </div>
-        </div>
+        <ErrorBoundaryWrapper>
+          <ErrorContent>
+            <ErrorTitle>Something went wrong</ErrorTitle>
+            <ErrorMessage>
+              We're sorry, but an unexpected error occurred. Please try again later.
+            </ErrorMessage>
+            <RetryButton onClick={this.handleReset}>Retry</RetryButton>
+          </ErrorContent>
+        </ErrorBoundaryWrapper>
       );
     }
 
