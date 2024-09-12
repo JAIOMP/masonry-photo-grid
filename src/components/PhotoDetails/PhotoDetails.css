@@ -2,6 +2,7 @@
     display: flex;
     gap: 24px;
     justify-content: space-around;
+    flex-direction: column;
     padding: 20px;
     margin: 0 auto;
     background-color: var(--background-light);
@@ -85,11 +86,13 @@
     .photo-details-container p {
         font-size: 0.875rem;
     }
-
-    .photo-details {
-        flex-direction: column;
-    }
 }
+
+@media (min-width: 1025px) {
+    .photo-details {
+      flex-direction: row;
+    }
+  }
 
 .icon {
     display: inline-block;

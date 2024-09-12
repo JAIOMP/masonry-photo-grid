@@ -52,11 +52,11 @@ const PhotoDetails: React.FC = () => {
                 <picture>
                     <source
                         media="(max-width: 600px)"
-                        srcSet={photo.previewURL}
+                        srcSet={photo.webformatURL}
                     />
                     <source
                         media="(max-width: 1024px)"
-                        srcSet={photo.webformatURL}
+                        srcSet={photo.largeImageURL}
                     />
                     <img
                         src={photo.largeImageURL}
